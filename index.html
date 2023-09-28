@@ -14,7 +14,7 @@
     </style>
 </head>
 
-<body>
+<body class="min-h-screen">
     <header class="bg-white">
         <div class="container mx-auto pb-10">
             <div class="navbar pb-10 pt-10">
@@ -22,25 +22,26 @@
                     <img src="image/Logo.png" alt="">
                 </div>
                 <div class="navbar-center">
-                    <button class="btn btn-active btn-ghost rounded-sm border-none text-black">Sort by View</button>
+                    <button onclick="sortBtn()"
+                        class="btn btn-active btn-ghost rounded-md border-none text-black hover:bg-red-500 hover:text-white">Sort
+                        by View</button>
                 </div>
                 <div class="navbar-end">
-                    <a class="btn bg-red-500 rounded-sm border-none text-white">Blog</a>
+                    <a class="btn bg-red-500 rounded-md border-none text-white hover:text-black hover:bg-gray-300"
+                        href="blog.html">Blog</a>
                 </div>
             </div>
             <hr>
         </div>
     </header>
-    <main class="container mx-auto bg-white p-2 mt-4">
-        <div id="category-container" class="flex justify-around items-center mt-5 bg-white">
+    <main class="container mx-auto bg-white">
+        <div id="category-container" class="flex justify-center items-center gap-x-2">
             <!-- Category -->
-            
         </div>
-        <div id="video-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 mt-5 bg-white">
+        <div id="video-container" class="grid-cols-1 mt-10">
             <!-- Display Video -->
         </div>
     </main>
-    <script src="js/video.js"></script>
     <script src="js/category.js"></script>
 </body>
 

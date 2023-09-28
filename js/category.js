@@ -1,31 +1,37 @@
+/*
+Display Category functions...
+*/
 const loadCategory = async () => {
     const res = await fetch('https://openapi.programming-hero.com/api/videos/categories');
     const data = await res.json();
-    categorys =data.data;
+    categorys = data.data;
     displayCategory(categorys);
 }
 const displayCategory = categorys => {
     const categoryContainer = document.getElementById('category-container');
     categorys.forEach(category => {
         let categoryID = category.category_id
-        console.log(categoryID);
+        //console.log(categoryID);
         const categoryCard = document.createElement('div');
-        categoryCard.classList = 'gap-2 bg-white shadow-none';
+        categoryCard.classList = 'gap-2 shadow-none';
         categoryCard.innerHTML = `
         <button onclick="displayVideoCard(${categoryID})" class="btn 
-        bg-gray-300 text-black border-none rounded-mdw-24">
+        bg-gray-300 text-black border-none rounded-md w-24
+         hover:bg-red-500 hover:text-white">
         ${category.category}</button>
         `;
         categoryContainer.appendChild(categoryCard);
     });
 }
+/*
+Display Video functions...
+*/
+
 const displayVideoCard = async (categoryId) => {
-    console.log("catagory "+categoryId);
     const res = await fetch(`https://openapi.programming-hero.com/api/videos/category/${categoryId}`);
     const data = await res.json();
     const id = data.data;
     displayVideo(id);
-    console.log(id)
 }
 
 const displayVideo = videos => {
@@ -40,33 +46,97 @@ const displayVideo = videos => {
       </clipPath>
     </defs>
   </svg>`
+    const len = videos.length;
+    //console.log(len)
     const videoContainer = document.getElementById('video-container');
+    videoContainer.classList.add("grid");
+    videoContainer.classList.add("md:grid-cols-2");
+    videoContainer.classList.add("lg:grid-cols-4");
+    //for remove previous data
     videoContainer.innerHTML = "";
-    videos.forEach(video => {
-        const videoCard = document.createElement('div');
-        videoCard.classList = 'card w-11/12 gap-2 bg-white shadow-none';
-        videoCard.innerHTML = `
-        <img class="rounded-md h-40" src="${video.thumbnail}"/>
-        <div class="card-body">
-            <div class="flex justify-center items-start gap-5">
-                <img class="w-10 h-10 rounded-full" src="${video.authors[0].profile_picture}" alt="">
-                <div>
-                    <h2 class="card-title text-black">${video.title}</h2>
-                    <div class="flex justify-center items-center gap-x-5">
-                        <p>${video.authors[0].profile_name}</p>
-                        <div class="gap-2">
-                        ${video?.authors[0]?.verified ? verify : ''}
-                        
+    /*
+    Display card if there is any data...
+    */
+    if (len > 0) {
+        let totalView = "1000k";
+        const a = [];
+        videos.forEach(video => {
+            //console.log(video)
+            /*
+            Display posted time...
+            */
+            function hour_convert() {
+                const time = parseFloat(video?.others?.posted_date);
+                const hours = Math.floor(time / 60);
+                return hours;
+            }
+            function min_convert() {
+                let hours = hour_convert()
+                let minutes = hours % 60;
+                return minutes;
+            }
+            const hrs = hour_convert();
+            const min = min_convert();
+            //console.log(hrs, min);
+            /*
+            creating video card...
+            */
+            const videoCard = document.createElement('div');
+            videoCard.classList = 'card w-11/12 gap-2 bg-white shadow-none';
+            videoCard.innerHTML = `
+            <img class="rounded-md h-40" src="${video.thumbnail}"/>
+            <div class="flex justify-end">
+                <p class="-mt-12 bg-black bg-opacity-50  text-white w-max h-8 p-1 mr-2 rounded-md">
+                ${video?.others?.posted_date ? hrs +"  hrs "+ min+"  min ago" : ""}</p>
+            </div>
+            <div class="card-body p-2 pb-10">
+                <div class="flex justify-start items-start gap-x-5">
+                    <img class="w-10 h-10 rounded-full" src="${video.authors[0].profile_picture}" alt="">
+                    <div>
+                        <h2 class="card-title text-black">${video.title}</h2>
+                        <div class="flex justify-around items-center">
+                            <p>${video.authors[0].profile_name}</p>
+                            <p>${video?.authors[0]?.verified ? verify : ''}</p>
                         </div>
+                        <p><span>${video.others.views}</span> views</p>
                     </div>
-                <p><span>${video.others.views}</span> views</p>
                 </div>
+            </div>
+        `;
+            videoContainer.appendChild(videoCard);
+            const view = video.others.views;
+            a.push(view)
+
+        });
+        /*
+            Display video by views...
+        */
+        console.log(totalView);
+        sortBtn = () => {
+            a.sort(function (a, b) { return a - b });
+            //console.log(view)
+        }
+    }
+    /*
+        Display no video...
+    */
+    else {
+        const videoContainer = document.getElementById('video-container');
+        videoContainer.classList.remove("grid");
+        videoContainer.classList.remove("md:grid-cols-2");
+        videoContainer.classList.remove("lg:grid-cols-4");
+        const videoCard = document.createElement('div');
+        videoCard.classList = 'card bg-white shadow-none p-5 justify-items-center';
+        videoCard.innerHTML = `
+        <img class="mx-auto w-52 h-52" src="image/Icon.png"/>
+        <div class="pt-10 pb-10">
+            <div>
+                <h2 class="text-3xl text-black text-center">NO VIDEO FOUND</h2>
             </div>
         </div>
         `;
         videoContainer.appendChild(videoCard);
-    });
+    }
 }
-
 loadCategory();
 displayVideoCard(1000);

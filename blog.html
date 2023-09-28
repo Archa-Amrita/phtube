@@ -1,11 +1,69 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Blog</title>
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@3.8.0/dist/full.css" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        * {
+            background-color: white;
+        }
+    </style>
 </head>
-<body>
-    
+
+<body class="min-h-screen">
+    <header class="bg-white">
+        <div class="container mx-auto pb-10">
+            <div class="navbar pb-10 pt-10">
+                <div class="navbar-start">
+                    <img src="image/Logo.png" alt="">
+                </div>
+                <div class="navbar-center"></div>
+                <div class="navbar-end">
+                    <a class="btn bg-red-500 rounded-sm border-none text-white" href="index.html">Back</a>
+                </div>
+            </div>
+            <hr>
+        </div>
+    </header>
+    <main class="container mx-auto">
+        <div class="collapse bg-base-200 mb-10">
+            <input type="checkbox" class="peer" />
+            <div
+                class="collapse-title bg-red-500 text-primary-content peer-checked:bg-secondary peer-checked:text-secondary-content text-2xl">
+                Discuss the scope of var, let, and const
+            </div>
+            <div
+                class="collapse-content  bg-red-500 peer-checked:bg-secondary peer-checked:text-secondary-content">
+                <p class=" bg-red-500 text-xl text-white">hello</p>
+            </div>
+        </div>
+        <div class="collapse bg-base-200  mb-10">
+            <input type="checkbox" class="peer" />
+            <div
+                class="collapse-title bg-red-500 text-primary-content peer-checked:bg-secondary peer-checked:text-secondary-content text-2xl">
+                Tell us the use cases of null and undefined
+            </div>
+            <div
+                class="collapse-content  bg-red-500 peer-checked:bg-secondary peer-checked:text-secondary-content">
+                <p class=" bg-red-500 text-xl text-white">hello</p>
+            </div>
+        </div>
+        <div class="collapse bg-base-200">
+            <input type="checkbox" class="peer" />
+            <div
+                class="collapse-title bg-red-500 text-primary-content peer-checked:bg-secondary peer-checked:text-secondary-content text-2xl">
+                What do you mean by REST API?
+            </div>
+            <div
+                class="collapse-content  bg-red-500 peer-checked:bg-secondary peer-checked:text-secondary-content">
+                <p class=" bg-red-500 text-xl text-white">hello</p>
+            </div>
+        </div>
+    </main>
 </body>
+
 </html>
