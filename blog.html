@@ -36,9 +36,35 @@
                 class="collapse-title bg-red-500 text-primary-content peer-checked:bg-secondary peer-checked:text-secondary-content text-2xl">
                 Discuss the scope of var, let, and const
             </div>
-            <div
-                class="collapse-content  bg-red-500 peer-checked:bg-secondary peer-checked:text-secondary-content">
-                <p class=" bg-red-500 text-xl text-white">hello</p>
+            <div class="collapse-content  bg-red-500 peer-checked:bg-secondary peer-checked:text-secondary-content">
+                <p class=" bg-white text-lg text-black p-10 rounded-xl">
+                    The scope of a variable refers to the region of code in which it is accessible. In JavaScript, there
+                    are three types of scopes:
+                    <br><br>
+                    <span class="text-2xl">Global scope: </span>Variables declared outside of any function are globally
+                    scoped, meaning they can be
+                    accessed from anywhere in the program.
+                    <br><br>
+                    <span class="text-2xl">Function scope: </span>Variables declared inside a function are function
+                    scoped, meaning they can only be
+                    accessed from within that function.
+                    <br><br>
+                    <span class="text-2xl">Block scope: </span>Variables declared inside a block of code (such as an if
+                    statement, for loop, or curly
+                    braces) are block scoped, meaning they can only be accessed from within that block of code.
+                    <br><br>
+                    var variables have function scope by default, but they can also be globally scoped if declared
+                    outside of any function. This can lead to unexpected behavior, so it is generally best to avoid
+                    using var variables in favor of let and const variables.
+                    <br><br>
+                    let variables are block scoped. This means that they can only be accessed from within the block of
+                    code in which they are declared. If you try to access a let variable outside of its scope, you will
+                    get a reference error.
+                    <br><br>
+                    const variables are also block scoped, but they cannot be reassigned. Once a const variable is
+                    declared, its value cannot be changed. This makes const variables ideal for storing constants, such
+                    as the value of pi or the number of days in a year.
+                </p>
             </div>
         </div>
         <div class="collapse bg-base-200  mb-10">
@@ -47,9 +73,22 @@
                 class="collapse-title bg-red-500 text-primary-content peer-checked:bg-secondary peer-checked:text-secondary-content text-2xl">
                 Tell us the use cases of null and undefined
             </div>
-            <div
-                class="collapse-content  bg-red-500 peer-checked:bg-secondary peer-checked:text-secondary-content">
-                <p class=" bg-red-500 text-xl text-white">hello</p>
+            <div class="collapse-content  bg-red-500 peer-checked:bg-secondary peer-checked:text-secondary-content">
+                <p class=" bg-white text-lg text-black p-10 rounded-xl">
+                    Null and undefined are two special values in JavaScript that represent the absence of a value.
+                    However, there is a subtle difference between the two.
+                    <br><br>
+                    Null is a value that can be assigned to a variable. It is used to explicitly represent the absence
+                    of a value. For example, we might assign null to a variable that represents a user if the user is
+                    not logged in.
+                    <br><br>
+                    Undefined is a value that is assigned to a variable by default if no value is explicitly assigned to
+                    it. It is also used to represent the absence of a value, but it is typically used in different
+                    situations than null.
+                    <br>
+                    For example, we might get an undefined value if we try to access a property
+                    on an object that does not exist.
+                </p>
             </div>
         </div>
         <div class="collapse bg-base-200">
@@ -58,11 +97,31 @@
                 class="collapse-title bg-red-500 text-primary-content peer-checked:bg-secondary peer-checked:text-secondary-content text-2xl">
                 What do you mean by REST API?
             </div>
-            <div
-                class="collapse-content  bg-red-500 peer-checked:bg-secondary peer-checked:text-secondary-content">
-                <p class=" bg-red-500 text-xl text-white">hello</p>
+            <div class="collapse-content  bg-red-500 peer-checked:bg-secondary peer-checked:text-secondary-content">
+                <p class=" bg-white text-lg text-black p-10 rounded-xl">
+                    REST API stands for Representational State Transfer API. It is a type of API that conforms to the
+                    REST architectural style. REST is a set of constraints that define how a web service should work.
+                    REST APIs are designed to be scalable, efficient, and easy to use.
+                    <br><br>
+                    REST APIs use HTTP requests to perform CRUD (Create, Read, Update, Delete) operations on resources.
+                    Resources are any identifiable entity, such as a user, product, or order.
+                    <br><br>
+                    Here are some examples of REST API calls:
+                    <br>
+                    <span class="text-2xl">GET /users</span> to retrieve a list of all users.
+                    <br>
+                    <span class="text-2xl">POST /users</span> to create a new user.
+                    <br>
+                    <span class="text-2xl">PUT /users/{id}</span>  to update a user with the specified ID.
+                    <br>
+                    <span class="text-2xl">DELETE /users/{id}</span> to delete a user with the specified ID.
+                    <br><br>
+                    REST APIs are used by a wide variety of applications, including web applications, mobile apps, and
+                    desktop softwares.
+                </p>
             </div>
         </div>
+        <div class="p-10"></div>
     </main>
 </body>
 

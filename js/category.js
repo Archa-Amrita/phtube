@@ -15,7 +15,7 @@ const displayCategory = categorys => {
         const categoryCard = document.createElement('div');
         categoryCard.classList = 'gap-2 shadow-none';
         categoryCard.innerHTML = `
-        <button onclick="displayVideoCard(${categoryID})" class="btn 
+        <button onclick="displayVideoCard(${categoryID}); activeBtn(${categoryID})" class="btn 
         bg-gray-300 text-black border-none rounded-md w-24
          hover:bg-red-500 hover:text-white">
         ${category.category}</button>
@@ -67,12 +67,13 @@ const displayVideo = videos => {
             */
             function hour_convert() {
                 const time = parseFloat(video?.others?.posted_date);
-                const hours = Math.floor(time / 60);
+                const hours = Math.floor(time / 3600);
                 return hours;
             }
             function min_convert() {
+                const time = parseFloat(video?.others?.posted_date) / 3600;
                 let hours = hour_convert()
-                let minutes = hours % 60;
+                let minutes = Math.floor((time - hours) * 60);
                 return minutes;
             }
             const hrs = hour_convert();
@@ -82,12 +83,12 @@ const displayVideo = videos => {
             creating video card...
             */
             const videoCard = document.createElement('div');
-            videoCard.classList = 'card w-11/12 gap-2 bg-white shadow-none';
+            videoCard.classList = 'card w-11/12 gap-2 bg-white shadow-none mx-4 lg:mx-0';
             videoCard.innerHTML = `
             <img class="rounded-md h-40" src="${video.thumbnail}"/>
             <div class="flex justify-end">
                 <p class="-mt-12 bg-black bg-opacity-50  text-white w-max h-8 p-1 mr-2 rounded-md">
-                ${video?.others?.posted_date ? hrs +"  hrs "+ min+"  min ago" : ""}</p>
+                ${video?.others?.posted_date ? hrs + "  hrs " + min + "  min ago" : ""}</p>
             </div>
             <div class="card-body p-2 pb-10">
                 <div class="flex justify-start items-start gap-x-5">
@@ -111,7 +112,7 @@ const displayVideo = videos => {
         /*
             Display video by views...
         */
-        console.log(totalView);
+        //console.log(totalView);
         sortBtn = () => {
             a.sort(function (a, b) { return a - b });
             //console.log(view)
@@ -139,4 +140,11 @@ const displayVideo = videos => {
     }
 }
 loadCategory();
-displayVideoCard(1000);
+displayVideoCard(1000); 
+const activeBtn = (id) => {
+    const ID = id;
+    // console.log(ID)
+    // const red = document.getElementById("ID");
+    // console.log(red)
+    // red.classList.add("bg-red")
+}
